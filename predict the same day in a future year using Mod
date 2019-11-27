@@ -1,0 +1,86 @@
+import numpy as np
+from mod import Mod
+import datetime 
+from datetime import timedelta
+
+def isleap(year):
+    if (year % 4) == 0:
+        if (year % 100) == 0:
+            if (year % 400) == 0:
+                return True
+            else:
+                return False
+        else:
+            return True
+    else:
+        return False
+
+
+
+
+def f(y1,y2):
+    l = list(np.arange(int(y1),y2+1))
+    count = 0
+    diff = y2-int(y1)
+    for i in l:
+        if (isleap(i) == True) :
+            count = count + 1
+    
+    days = ((diff  * 365) + count)
+    return days
+ddd =[]
+y1 = (input("year 1 "))
+y2 = int(input("year 2 "))
+month = (input("month "))
+date = (input("date "))
+f(y1,y2)
+
+
+ddd.append(date)
+ddd.append(month)
+ddd.append(y1)
+
+def joinS(ddd):
+    return ' '.join(string for string in ddd)
+date = joinS(ddd)   
+
+def findDay(date): 
+    born = datetime.datetime.strptime(date, '%d %m %Y').weekday() 
+    return (calendar.day_name[born]) 
+  
+
+d = findDay(date)
+
+k =[]
+j=[]
+for i in range(0,7):
+    if dd[i] == d:
+        n = 7 - i
+        if n > i:
+            b = i-n
+        else:
+            b = i+n
+        for e in range(i,b):
+            k.append(dd[e])
+        for p in range(1,i+1):
+            
+            j.append(dd[i-p])
+            pp = j[::-1]
+        
+
+h = k + pp
+q=[]
+for element in dd:
+    if element not in h:
+        q.append(element)
+final = q + h
+ye = f(y1,y2)
+x = Mod(ye,7)
+
+for i in range(1,8):
+    
+    if (x+i == 0):
+        k = i
+        
+        print("U asked for "+ str(date))
+        print("That day in " + str(y2) + " is a" ,final[-(i)])
